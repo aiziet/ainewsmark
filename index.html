@@ -1,73 +1,218 @@
-<!doctype html><html><head><meta charset="utf-8"><title>AINEWSMARK</title></head>
-<body><h1>AINEWSMARK</h1><p>Placeholder index.html</p></body></html>AI
-News
-Watch
-Research
-Policy
-Tools
-Chips
-Search AI news…
-Annotate
-Today's Picks
-LEAD • USA • EN
-Lead AI story headline — bold, readable, Wired-like
-Two-sentence deck that explains the story succinctly. Placeholder copy for layout only.
 
-2h ago • Category: Business • Also from: FT, CNBC.
-Most Recent
-Best AI laptops for students (2025)
-15m — Reviews
-EU AI Act timeline: what’s next
-42m — Policy
-Open-model chips roundup
-1h — Chips
-Inside Anthropic’s latest benchmark
-1h — Research
-Top Stories by Source
-YouTube
-TikTok
-Instagram
-The Guardian
-TechCrunch
-WIRED
-FT
-Economist
-CNBC
-Bloomberg
-BBC
-Fox News
-01
-YouTube — Top item 1
-Video/Short • EN
-02
-YouTube — Top item 2
-Video/Short • EN
-03
-YouTube — Top item 3
-Video/Short • EN
-04
-YouTube — Top item 4
-Video/Short • EN
-05
-YouTube — Top item 5
-Video/Short • EN
-06
-YouTube — Top item 6
-Video/Short • EN
-07
-YouTube — Top item 7
-Video/Short • EN
-08
-YouTube — Top item 8
-Video/Short • EN
-09
-YouTube — Top item 9
-Video/Short • EN
-10
-YouTube — Top item 10
-Video/Short • EN
-Top 10 per source, deduped within source. Items link to the canonical clustered story.
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AINEWSMARK — TEST Deploy (v6 light theme)</title>
+<style>
+:root{
+  --bg:#ffffff; --ink:#111111; --ink-2:#333333; --muted:#666666; --rule:#e6e6e6;
+  --link:#0066cc; --sidebar-bg:#fafafa; --radius:10px; --gap:18px; --maxw:1280px;
+  --h1:48px; --h2:22px; --deck:18px; --body:16px; --small:13px;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font: var(--body)/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,ui-sans-serif}
+a{color:var(--ink);text-decoration:none} a.link{color:var(--link)}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+/* TEST badge */
+.test-badge{position:fixed;right:12px;top:12px;background:#000;color:#fff;padding:6px 8px;border-radius:6px;font-weight:800;z-index:9999;letter-spacing:.04em}
+/* Masthead (original nav) */
+header.mast{position:sticky;top:0;background:#fff;z-index:1000;border-bottom:1px solid var(--ink)}
+.mast-inner{display:flex;align-items:center;gap:16px;padding:10px 0}
+.brand{font-weight:900;font-size:24px;letter-spacing:1.5px;border:3px solid #000;padding:4px 8px;line-height:1}
+.nav{display:flex;gap:18px;flex-wrap:wrap;margin-left:16px}
+.nav a{font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);padding:8px 6px;border-radius:6px}
+.nav a.active,.nav a:hover{background:#000;color:#fff}
+.spacer{flex:1}
+.tools{display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;border:1px solid var(--rule);padding:6px 10px;border-radius:999px;background:#fff}
+.search input{border:none;outline:none;width:220px;font:inherit}
+.btn{border:1px solid var(--ink);background:#fff;padding:6px 10px;border-radius:6px;cursor:pointer;font-weight:700}
+.btn:hover{background:#000;color:#fff}
+/* Labels & layout */
+.section-label{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;font-size:12px;border:2px solid #000;padding:6px 10px;margin:22px 0 14px;background:#fff}
+.grid-main{display:grid;grid-template-columns: 2fr 1fr; gap:var(--gap)}
+@media (max-width: 1000px){ .grid-main{grid-template-columns: 1fr} .sidebar{order:2}}
+/* Hero */
+.hero{display:flex;gap:18px;border-bottom:1px solid var(--rule);padding-bottom:18px;margin-top:18px}
+.hero-media{flex:1;background-image:linear-gradient(135deg,#f3f3f3,#e8e8e8);border-radius:var(--radius);min-height:360px}
+.hero-body{flex:1}
+.kicker{font-weight:800;font-size:12px;letter-spacing:.08em;color:var(--ink)}
+.h1{font-size:var(--h1);line-height:1.05;margin:12px 0 10px;font-weight:900}
+.deck{font-size:var(--deck);color:var(--ink-2);max-width:60ch}
+.meta{font-size:var(--small);color:var(--muted);margin-top:10px}
+/* Sidebar: Most Recent */
+.sidebar{background:var(--sidebar-bg);border-left:1px solid var(--rule);padding-left:18px}
+.sidebar .head{display:inline-block;background:#000;color:#fff;padding:6px 10px;font-weight:900;font-size:12px;letter-spacing:.08em}
+.recent{display:flex;flex-direction:column;gap:16px;margin-top:12px}
+.recent .item{display:grid;grid-template-columns: 88px 1fr; gap:12px; align-items:center}
+.recent .thumb{width:88px;height:58px;background:#eaeaea;border:1px solid var(--rule);border-radius:8px}
+.recent .title{font-weight:900}
+.recent .meta{font-size:12px;color:var(--muted)}
+/* Top by Source (tabs) */
+.tabs{border-top:1px solid #000;padding-top:14px;margin-top:16px}
+.tablist{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.tab{border:1.5px solid #000;background:#fff;color:#000;padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:800;font-size:13px}
+.tab.active,.tab:hover{background:#000;color:#fff}
+.tabpanel{display:none}.tabpanel.active{display:block}
+.grid10{display:grid;grid-template-columns: repeat(5, 1fr); gap:14px}
+@media (max-width: 900px){ .grid10{grid-template-columns: repeat(2, 1fr)}}
+.tiny{border:1px solid #000;border-radius:10px;padding:10px;background:#fff}
+.rank{font-size:12px;color:#000;border:1px solid #000;border-radius:999px;padding:2px 8px;display:inline-block;font-weight:900}
+.tiny .t{font-weight:900;margin:6px 0 4px}
+.tiny .m{font-size:13px;color:var(--muted)}
+/* Footer */
+footer{border-top:1px solid #000;margin-top:30px;padding:20px 0;color:var(--muted);font-size:13px}
+/* Annotation */
+#canvas{position:relative}
+.annotate-pill{position:fixed;right:18px;bottom:18px;background:#fff;border:2px dashed #000;color:#000;padding:10px 12px;border-radius:10px;z-index:1001;display:none}
+.annotate-pill.on{display:block}
+.pin{position:absolute;width:18px;height:18px;border-radius:50%;background:#000;color:#fff;box-shadow:0 0 0 3px rgba(0,0,0,.1);transform:translate(-50%,-50%);cursor:pointer;border:2px solid #fff;z-index:999}
+.pin::after{content: attr(data-id); position:absolute;top:20px;left:50%;transform:translateX(-50%);background:#fff;color:#000;font-size:11px;padding:2px 6px;border-radius:8px;border:1px solid #000}
+.notes-panel{position:fixed;right:18px;top:72px;width:360px;max-height:70vh;overflow:auto;background:#fff;border:2px solid #000;border-radius:12px;padding:12px;z-index:1001;display:none}
+.notes-panel.on{display:block}
+.note{border:1px solid #000;border-radius:10px;padding:10px;margin-bottom:10px}
+.note h4{margin:0 0 6px;font-size:14px}.note p{margin:0 0 6px;color:#333}
+.toolbar{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.btn-ghost{border:1px solid #000;background:#fff;padding:6px 8px;border-radius:8px;cursor:pointer;font-weight:800}
+.input, textarea{background:#fff;border:1px solid #000;color:#000;border-radius:8px;padding:8px;font: inherit;width:100%}
+.small{font-size:12px;color:#333}
+</style>
+</head>
+<body>
+<div class="test-badge">TEST DEPLOY</div>
+<header class="mast">
+  <div class="container mast-inner">
+    <div class="brand">AI</div>
+    <nav class="nav" aria-label="Primary">
+      <a href="#" class="active">News</a>
+      <a href="#">Watch</a>
+      <a href="#">Research</a>
+      <a href="#">Policy</a>
+      <a href="#">Tools</a>
+      <a href="#">Chips</a>
+    </nav>
+    <div class="spacer"></div>
+    <div class="tools">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input placeholder="Search AI news…" aria-label="Search input">
+      </div>
+      <button id="annotateToggle" class="btn">Annotate</button>
+    </div>
+  </div>
+</header>
 
-Use Annotate (button top-right) to drop markers & comments. Press A to toggle.
+<main id="canvas">
+  <div class="container">
+    <div class="section-label">Today's Picks</div>
+    <section class="grid-main">
+      <div>
+        <div class="hero">
+          <div class="hero-media" aria-label="Lead image placeholder"></div>
+          <div class="hero-body">
+            <div class="kicker">LEAD • USA • EN</div>
+            <h1 class="h1">Lead AI story headline — bold, readable, Wired-like</h1>
+            <p class="deck">Two-sentence deck that explains the story succinctly. Placeholder copy for layout only.</p>
+            <div class="meta">2h ago • Category: Business • Also from: <a class="link" href="#">FT</a>, <a class="link" href="#">CNBC</a>.</div>
+          </div>
+        </div>
+      </div>
+      <aside class="sidebar">
+        <span class="head">Most Recent</span>
+        <div class="recent">
+          <div class="item"><div class="thumb"></div><div><div class="title">Best AI laptops for students (2025)</div><div class="meta">15m — Reviews</div></div></div>
+          <div class="item"><div class="thumb"></div><div><div class="title">EU AI Act timeline: what’s next</div><div class="meta">42m — Policy</div></div></div>
+          <div class="item"><div class="thumb"></div><div><div class="title">Open-model chips roundup</div><div class="meta">1h — Chips</div></div></div>
+          <div class="item"><div class="thumb"></div><div><div class="title">Inside Anthropic’s latest benchmark</div><div class="meta">1h — Research</div></div></div>
+        </div>
+      </aside>
+    </section>
 
-© 2025 AINEWSMARK — TEST deploy (v6 light theme).
+    <div class="section-label">Top Stories by Source</div>
+    <section class="tabs" id="sourceTabs">
+      <div class="tablist" role="tablist" aria-label="Sources"></div>
+      <div class="panels"></div>
+      <p class="small">Top 10 per source, deduped within source. Items link to the canonical clustered story.</p>
+    </section>
+
+    <p class="small">Use <b>Annotate</b> (button top-right) to drop markers & comments. Press <b>A</b> to toggle.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">© 2025 AINEWSMARK — TEST deploy (v6 light theme).</div>
+</footer>
+
+<!-- Source tabs -->
+<script>
+const SOURCES = [
+  { key:"youtube",   label:"YouTube",      type:"platform",  enabled:true },
+  { key:"tiktok",    label:"TikTok",       type:"platform",  enabled:true },
+  { key:"instagram", label:"Instagram",    type:"platform",  enabled:true },
+  { key:"guardian",  label:"The Guardian", type:"publisher", enabled:true },
+  { key:"techcrunch",label:"TechCrunch",   type:"publisher", enabled:true },
+  { key:"wired",     label:"WIRED",        type:"publisher", enabled:true },
+  { key:"ft",        label:"FT",           type:"publisher", enabled:true },
+  { key:"economist", label:"Economist",    type:"publisher", enabled:true },
+  { key:"cnbc",      label:"CNBC",         type:"publisher", enabled:true },
+  { key:"bloomberg", label:"Bloomberg",    type:"publisher", enabled:true },
+  { key:"bbc",       label:"BBC",          type:"publisher", enabled:true },
+  { key:"foxnews",   label:"Fox News",     type:"publisher", enabled:true }
+];
+const TOP_N = 10;
+const tabsRoot = document.getElementById('sourceTabs');
+const tablist = tabsRoot.querySelector('.tablist'); const panels = tabsRoot.querySelector('.panels');
+const activeKey = (SOURCES.find(s=>s.enabled)||SOURCES[0]).key;
+function setActive(key){ tablist.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active', b.dataset.key===key)); panels.querySelectorAll('.tabpanel').forEach(p=>p.classList.toggle('active', p.id===`src-${key}`)); }
+SOURCES.filter(s=>s.enabled).forEach((s)=>{
+  const b = document.createElement('button'); b.className='tab'+(s.key===activeKey?' active':''); b.dataset.key=s.key; b.textContent=s.label; b.addEventListener('click', ()=> setActive(s.key)); tablist.appendChild(b);
+  const p = document.createElement('div'); p.className='tabpanel'+(s.key===activeKey?' active':''); p.id=`src-${s.key}`; const grid=document.createElement('div'); grid.className='grid10';
+  for(let i=1;i<=TOP_N;i++){ const card=document.createElement('div'); card.className='tiny'; card.innerHTML=`<span class="rank">${String(i).padStart(2,'0')}</span><div class="t">${s.label} — Top item ${i}</div><div class="m">${s.type==='platform'?'Video/Short':'Article'} • EN</div>`; grid.appendChild(card); }
+  p.appendChild(grid); panels.appendChild(p);
+});
+</script>
+
+<!-- Annotation -->
+<script>
+(function(){
+  const STORAGE_KEY='ainewsmark_notes_test'; let annotateOn=false; let selectedId=null;
+  const canvas=document.getElementById('canvas');
+  const pill=document.createElement('div'); pill.className='annotate-pill'; pill.id='annotatePill'; pill.innerHTML='Annotate mode: ON — click to drop markers. Press <b>A</b> to toggle.'; document.body.appendChild(pill);
+  const panel=document.createElement('aside'); panel.className='notes-panel'; panel.id='notesPanel';
+  panel.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between">
+    <strong>Notes</strong><div class="toolbar"><button class="btn-ghost" id="exportNotes">Export</button><button class="btn-ghost" id="clearNotes">Clear</button></div></div>
+    <div style="margin-top:8px"><input id="noteTitle" class="input" placeholder="Title"/>
+    <div style="height:8px"></div><textarea id="noteText" rows="3" placeholder="Details…"></textarea>
+    <div style="height:8px"></div><input id="noteCountry" class="input" placeholder="Country (optional)"/>
+    <div style="height:8px"></div><input id="noteSection" class="input" placeholder="Section (Hero/Sidebar/Tabs/Page)"/>
+    <div class="toolbar" style="margin-top:8px"><button class="btn-ghost" id="saveNote">Save</button><button class="btn-ghost" id="deleteNote" disabled>Delete</button></div>
+    <hr style="margin:12px 0;border:0;border-top:1px solid #000"><div id="notesList"></div></div>`;
+  document.body.appendChild(panel);
+  const toggle=document.getElementById('annotateToggle'); const list=document.getElementById('notesList');
+  const noteTitle=document.getElementById('noteTitle'), noteText=document.getElementById('noteText'), noteCountry=document.getElementById('noteCountry'), noteSection=document.getElementById('noteSection');
+  const delBtn=document.getElementById('deleteNote');
+  function load(){try{const raw=localStorage.getItem(STORAGE_KEY);return raw?JSON.parse(raw):[]}catch(e){return[]}}
+  function save(arr){localStorage.setItem(STORAGE_KEY, JSON.stringify(arr))}
+  function percentPos(evt,c){const r=c.getBoundingClientRect();return{x:((evt.clientX-r.left)/r.width)*100,y:((evt.clientY-r.top)/r.height)*100}}
+  function guessSection(t){if(t.closest('.hero'))return'Hero'; if(t.closest('.sidebar'))return'Sidebar'; if(t.closest('#sourceTabs'))return'Tabs'; return'Page'}
+  function renderPins(arr){canvas.querySelectorAll('.pin').forEach(p=>p.remove());arr.forEach(n=>{const pin=document.createElement('div');pin.className='pin';pin.dataset.id=n.id;pin.style.left=n.x+'%';pin.style.top=n.y+'%';pin.title=n.title||'';pin.addEventListener('click',e=>{e.stopPropagation();select(n.id)});canvas.appendChild(pin);});}
+  function renderList(arr){list.innerHTML='';if(!arr.length){list.innerHTML='<div class="small">No notes yet. Click anywhere to drop a marker.</div>';return;}arr.slice().reverse().forEach(n=>{const card=document.createElement('div');card.className='note';card.innerHTML=`<h4>#${n.id} — ${n.title||'No title'}</h4><p>${n.text||''}</p><div class="small">${n.country||'—'} • ${n.section||'—'} • x:${n.x.toFixed(1)} y:${n.y.toFixed(1)}</div><div class="toolbar"><button class="btn-ghost" data-jump="${n.id}">Jump</button><button class="btn-ghost" data-edit="${n.id}">Edit</button><button class="btn-ghost" data-del="${n.id}">Delete</button></div>`;list.appendChild(card);});}
+  function select(id){const arr=load();const n=arr.find(x=>x.id===id);if(!n)return;selectedId=id;noteTitle.value=n.title||'';noteText.value=n.text||'';noteCountry.value=n.country||'';noteSection.value=n.section||'';delBtn.disabled=false;const pin=canvas.querySelector('.pin[data-id="'+id+'"]');if(pin){pin.scrollIntoView({behavior:'smooth',block:'center'});pin.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}],{duration:500});}}
+  function clearForm(){selectedId=null;noteTitle.value='';noteText.value='';noteCountry.value='';noteSection.value='';delBtn.disabled=true}
+  function setAnnotate(on){annotateOn=on;document.querySelector('.annotate-pill').classList.toggle('on',on);document.querySelector('.notes-panel').classList.toggle('on',on);toggle.textContent=on?'Annotate (ON)':'Annotate'}
+  toggle.addEventListener('click',()=>setAnnotate(!annotateOn)); document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='a')setAnnotate(!annotateOn)});
+  canvas.addEventListener('click',evt=>{if(!annotateOn)return;const pos=percentPos(evt,canvas);const arr=load();const id=(arr.reduce((m,n)=>Math.max(m,n.id||0),0)||0)+1;const note={id,x:pos.x,y:pos.y,title:noteTitle.value||'',text:noteText.value||'',section:noteSection.value||guessSection(evt.target),country:noteCountry.value||'',createdAt:new Date().toISOString()};arr.push(note);save(arr);renderPins(arr);renderList(arr);select(id)});
+  document.getElementById('saveNote').addEventListener('click',()=>{const arr=load();if(selectedId==null){alert('Click to drop a marker first.');return;}const i=arr.findIndex(n=>n.id===selectedId);if(i<0)return;arr[i].title=noteTitle.value;arr[i].text=noteText.value;arr[i].country=noteCountry.value;arr[i].section=noteSection.value;save(arr);renderPins(arr);renderList(arr)});
+  delBtn.addEventListener('click',()=>{if(selectedId==null)return;const arr=load().filter(n=>n.id!==selectedId);save(arr);clearForm();renderPins(arr);renderList(arr)});
+  list.addEventListener('click',e=>{const t=e.target;const id=parseInt(t.dataset.jump||t.dataset.edit||t.dataset.del||0,10);if(!id)return;if(t.dataset.jump||t.dataset.edit){select(id)}if(t.dataset.del){const arr=load().filter(n=>n.id!==id);save(arr);if(selectedId===id)clearForm();renderPins(arr);renderList(arr)}});
+  document.getElementById('exportNotes').addEventListener('click',()=>{const data=new Blob([localStorage.getItem(STORAGE_KEY)||'[]'],{type:'application/json'});const url=URL.createObjectURL(data);const a=document.createElement('a');a.href=url;a.download='ainewsmark-annotations.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+  document.getElementById('clearNotes').addEventListener('click',()=>{if(confirm('Clear all notes and markers?')){localStorage.removeItem(STORAGE_KEY);renderPins([]);renderList([]);clearForm()}});
+  const initial=load();renderPins(initial);renderList(initial);
+})();
+</script>
+</body>
+</html>
