@@ -1,0 +1,1 @@
+-- Schema already applied in Supabase

@@ -1,0 +1,6 @@
+rss:
+  - key: techcrunch
+    name: TechCrunch (AI)
+    country: US
+    default_lang: en
+    rss_url: https://techcrunch.com/tag/artificial-intelligence/feed/
