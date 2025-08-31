@@ -13,9 +13,9 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install feedparser requests simhash sentence-transformers psycopg2-binary pyyaml numpy
-      - run: python ingest.py
+      - run: python ingest/ingest.py
         env:
           PG_CONN: ${{ secrets.PG_CONN }}
-      - run: python cluster.py
+      - run: python ingest/cluster.py
         env:
           PG_CONN: ${{ secrets.PG_CONN }}
