@@ -3,8 +3,8 @@
     PG_CONN: ${{ secrets.PG_CONN }}
   run: |
     # strip any literal or URL-encoded quotes from PG_CONN
- PG_CONN="${PG_CONN//\"/}"
-PG_CONN="${PG_CONN//%22/}"
+    PG_CONN="${PG_CONN//\"/}"
+    PG_CONN="${PG_CONN//%22/}"
     export PG_CONN
     echo "Starting ingest..."
     python ingest/ingest.py
