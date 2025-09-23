@@ -1,21 +1,42 @@
-name: ingest-and-cluster
+name: Ingest Feeds and Deploy
+
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch: {}
 
 jobs:
-  run:
+  ingest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - run: pip install feedparser requests simhash sentence-transformers psycopg2-binary pyyaml numpy
-      - run: python ingest/ingest.py
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install feedparser requests simhash sentence-transformers psycopg2-binary pyyaml
+
+      - name: Run ingest
         env:
           PG_CONN: ${{ secrets.PG_CONN }}
-      - run: python ingest/cluster.py
+        run: |
+          echo "Starting ingest..."
+          python ingest/ingest.py
+          echo "Ingest finished."
+
+      - name: Deploy to Vercel (production)
+        if: always()
         env:
-          PG_CONN: ${{ secrets.PG_CONN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        run: |
+          npm i -g vercel
+          vercel pull --yes --environment=production --token $VERCEL_TOKEN --scope $VERCEL_ORG_ID
+          vercel deploy --prod --yes --token $VERCEL_TOKEN --scope $VERCEL_ORG_ID
